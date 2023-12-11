@@ -17,7 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: divideprojects/poetry-export-requirements-action@v1
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -36,6 +35,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
+          poetry export --without-hashes --without-urls | awk '{ print $1 }' FS=';' > requirements.txt
           git add -A
           if [-z "$(git status --porcelain)"]; then
             echo "::set-output name=push::false"
