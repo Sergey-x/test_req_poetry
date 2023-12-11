@@ -17,9 +17,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: divideprojects/poetry-export-requirements-action@v1
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
+          without-hashes: true
+          outfile-name: requirements.txt
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
@@ -27,9 +30,3 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry && poetry config virtualenvs.create false
           poetry install
-  
-      - uses: divideprojects/poetry-export-requirements-action@v1
-      - name: Create or update requirements.txt
-        with:
-          without-hashes: true
-          outfile-name: requirements.txt
