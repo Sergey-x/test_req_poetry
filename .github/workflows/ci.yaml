@@ -27,7 +27,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry && poetry config virtualenvs.create false
           poetry install
-
+  
+      - uses: divideprojects/poetry-export-requirements-action@v1
       - name: Create or update requirements.txt
-        run: |
-          poetry export --without-hashes -o requirements.txt
+        with:
+          without-hashes: true
+          outfile-name: requirements.txt
