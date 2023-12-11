@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "name"
 version = "0.2.0"
-description = "Сервсис "
+description = "Сервсис 2"
 authors = ["Sergey-x <sergey.rubnikovich@gmail.com>"]
 readme = "README.md"
 
