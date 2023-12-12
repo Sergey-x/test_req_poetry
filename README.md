@@ -53,16 +53,17 @@ poetry shell
     ```
 
 
-### 2.5. Установка зависимостей из wheels:
-TODO
+### 2.5. Поменял зависимости ручками? Сделай lock
+
+```shell
+poetry lock
+```
 
 ### 2.6. Выход из виртуального окружения
 
 ```shell
 exit
 ```
-
-
 
 ## 3. Дополнительно:
 
@@ -79,6 +80,12 @@ poetry export --without-hashes -o requirements.txt
 ```shell
 poetry export --with=dev --without-hashes -o requirements.txt
 ```
+
+В будущих версиях функционал export вынесен в плагин:
+```shell
+poetry self add poetry-plugin-export
+```
+
 
 ### Конвертация из requirements.txt
 
@@ -116,14 +123,12 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
-          without-hashes: true
-          outfile-name: requirements.txt
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install poetry && poetry config virtualenvs.create false
+          pip install poetry==1.7.1 && poetry config virtualenvs.create false
           poetry install
   
       - name: Commit files
@@ -145,4 +150,17 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
 ```
+
+
+Вопросики:
+
+1. Можно ли организовать скачивание пакетов для оффлайн установки или можно будет реализовать через старую схему с requirements.txt?
+Берем старую
+
+2. Откат установки ошибочно установленной библиотеки со всеми зависимостями.
+
+poetry remove - удалит пакет и не используемые
+
+
