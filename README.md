@@ -107,10 +107,16 @@ poetry self add poetry-plugin-export
 ```shell
 poetry add $(cat requirements.txt)
 ```
-
-
-
 https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry
+
+
+Вопросики:
+
+1. Можно ли организовать скачивание пакетов для оффлайн установки или можно будет реализовать через старую схему с requirements.txt?
+
+https://github.com/python-poetry/poetry/issues/5983
+
+2. Откат установки ошибочно установленной библиотеки со всеми зависимостями.
 
 
 ## 4. Конфиг CI для автоматического обновления файла requitements
@@ -167,15 +173,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
 ```
-
-
-Вопросики:
-
-1. Можно ли организовать скачивание пакетов для оффлайн установки или можно будет реализовать через старую схему с requirements.txt?
-Берем старую
-
-2. Откат установки ошибочно установленной библиотеки со всеми зависимостями.
-
-poetry remove - удалит пакет и не используемые
-
-
