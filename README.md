@@ -9,6 +9,21 @@ Docs: https://python-poetry.org/docs
 
 ## 1. Установка
 
+#### 1.1 With the official installer
+* Windows
+
+```shell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
+
+* Linux
+```shell
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+#### 1.2 With pip
+ 
+`pip install poetry`
 
 ## 2. Базовое использование
 
