@@ -2,18 +2,10 @@ name: UR
 
 on:
   pull_request:
-    paths:
-      - "poetry.lock"
-      - "pyproject.toml"
-      - "*"
     branches:
       - "main"
       - "master"
   push:
-    paths:
-      - "poetry.lock"
-      - "pyproject.toml"
-      - "*"
     branches:
       - "main"
       - "master"
