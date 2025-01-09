@@ -44,10 +44,10 @@ jobs:
           poetry export --without-hashes --without-urls | awk '{ print $1 }' FS=';' > requirements.txt
           git add -A
           if [-z "$(git status --porcelain)"]; then
-            echo "::set-output name=push::false"
+            echo "push=false" >>$GITHUB_OUTPUT
           else
             git diff-index --quiet HEAD || git commit -m "Update requirements" -a
-            echo "::set-output name=push::true"
+            echo "push=true" >>$GITHUB_OUTPUT
           fi
         shell: bash
       - name: Push changes
